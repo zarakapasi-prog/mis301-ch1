@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MIS 301 Chapter 1 Study Site</title>
+  <style>
+    :root{--bg1:#f8fbff;--bg2:#edf3fb;--card:#fff;--ink:#1f2937;--muted:#667085;--line:#d9e3f1;--accent:#2563eb;--accent-dark:#1d4ed8;--good:#166534;--shadow:0 16px 36px rgba(37,99,235,.10);--radius:22px}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;color:var(--ink);background:radial-gradient(circle at top left, rgba(37,99,235,.10), transparent 25%),linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 100%);line-height:1.6}
+    .topbar{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:rgba(248,251,255,.88);border-bottom:1px solid rgba(37,99,235,.12)}
+    .nav{max-width:1180px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .brand{font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-dark);font-size:.94rem}
+    .navlinks{display:flex;gap:10px;flex-wrap:wrap}
+    .navlinks a{text-decoration:none;color:var(--ink);padding:8px 12px;border-radius:999px;background:#eff5ff;border:1px solid #d8e5fb;font-size:.93rem}
+    .shell{max-width:1180px;margin:0 auto;padding:28px 20px 48px}
+    .hero{display:grid;grid-template-columns:1.18fr .82fr;gap:22px;margin-bottom:24px}
+    .hero-main,.hero-side,.panel,.question,.vocab-card,.source-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-main{padding:34px;position:relative;overflow:hidden}
+    .hero-main:after{content:"";position:absolute;right:-28px;top:-30px;width:185px;height:185px;background:linear-gradient(135deg, rgba(37,99,235,.18), rgba(37,99,235,0));border-radius:34px;transform:rotate(18deg)}
+    .eyebrow{display:inline-block;margin-bottom:14px;padding:8px 12px;border-radius:999px;background:#eaf2ff;border:1px solid #d5e4ff;color:var(--accent-dark);font-size:.84rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase}
+    h1{margin:0 0 12px;font-size:clamp(2rem,4vw,3.4rem);line-height:1.05;letter-spacing:-.03em}
+    .hero p{margin:0;color:#374151;max-width:64ch}
+    .pill-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .pill{background:#f4f8ff;border:1px solid #dbe7fb;border-radius:999px;padding:8px 12px;font-size:.92rem;font-weight:600;color:#42556f}
+    .hero-side{padding:24px;background:linear-gradient(180deg,#fff 0%,#f4f8ff 100%)}
+    .hero-side h2{margin:0 0 10px;font-size:1.14rem}
+    .metric{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:14px 0;border-top:1px dashed #d8e3f3}
+    .metric:first-of-type{border-top:none}
+    .metric-num{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:800}
+    .metric b{display:block}.metric span{font-size:.95rem;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;margin-bottom:24px}
+    .panel{padding:26px}
+    .panel h2{margin:0 0 6px;font-size:1.45rem}
+    .panel-intro{margin:0 0 18px;color:var(--muted)}
+    .quiz-list,.vocab-wrap,.tool-stack{display:grid;gap:18px}
+    .question{padding:22px;background:linear-gradient(180deg,#fff 0%,#f9fbff 100%)}
+    .q-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+    .q-badge{background:#eaf2ff;border:1px solid #d5e4ff;color:var(--accent-dark);padding:6px 10px;border-radius:999px;font-weight:800;font-size:.84rem}
+    .mini{font-size:.87rem;color:var(--muted)}
+    .scenario{background:#fcfdff;border-left:5px solid var(--accent);padding:14px 16px;border-radius:14px;margin:12px 0 14px}
+    .prompt{margin:0 0 12px;font-weight:800;font-size:1.02rem}
+    .options{display:grid;gap:10px;margin:14px 0}
+    .option{padding:12px 14px;border-radius:14px;border:1px solid #dbe4f2;background:#fff}
+    .correct{margin-top:10px;color:var(--good);font-weight:800}
+    details{margin-top:12px;border:1px dashed #d5e0f0;border-radius:14px;background:#f8fbff;overflow:hidden}
+    summary{cursor:pointer;list-style:none;padding:12px 14px;font-weight:800;color:#2559c7}
+    summary::-webkit-details-marker{display:none}
+    .explain{padding:0 14px 14px;color:#374151}
+    .vocab-card{padding:18px;background:linear-gradient(180deg,#fff 0%,#fbfdff 100%)}
+    .term{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:8px}
+    .term h3{margin:0;font-size:1.02rem}
+    .tag{white-space:nowrap;font-size:.78rem;padding:6px 9px;border-radius:999px;background:#eaf2ff;border:1px solid #d5e4ff;color:#2559c7}
+    .vocab-card p{margin:8px 0 0;color:#374151}
+    .cite-mini{margin-top:10px;color:var(--muted);font-size:.88rem}
+    .toolbox{padding:16px;border-radius:18px;background:#f4f8ff;border:1px solid #dbe7fb}
+    .toolbox h3{margin:0 0 8px;font-size:1rem}.toolbox p{margin:0;color:#475467;font-size:.95rem}
+    .source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .source-card{padding:18px}
+    .source-card h3{margin:0 0 8px;font-size:1rem}
+    .source-card p{margin:0 0 10px;color:#475467;font-size:.95rem}
+    .source-card a{color:var(--accent-dark);text-decoration:none;font-weight:700;word-break:break-word}
+    .source-type{display:inline-block;margin-bottom:8px;padding:5px 8px;border-radius:999px;font-size:.78rem;font-weight:800}
+    .slide{background:#eaf2ff;border:1px solid #d5e4ff;color:#2559c7}
+    .web{background:#eefcf2;border:1px solid #cdeed7;color:#166534}
+    .footer-note{margin-top:14px;color:var(--muted);font-size:.92rem}
+    @media (max-width:980px){.hero,.grid,.source-grid{grid-template-columns:1fr}}
+    @media (max-width:620px){.shell{padding:18px 14px 40px}.nav{padding:12px 14px}.hero-main,.hero-side,.panel{padding:20px}.navlinks a{font-size:.86rem}}
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="nav"><div class="brand">MIS 301 · Chapter 1 · Study Site</div><div class="navlinks"><a href="#quiz">Quiz</a><a href="#vocab">Vocab</a><a href="#sources">Citations</a></div></div></div>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">MIS 301 Chapter 1 Study Site</div>
+        <h1>Chapter 1: Setting the Stage</h1>
+        <p>This page focuses on the five-component information system model, digital transformation, information versus technology, business roles in information systems, collaboration, and why managers need to think about strategy and process instead of just hardware or software. It includes a five-question scenario quiz, a vocabulary section with specific definitions, and a citation section that clearly separates slide-based support from outside web references.</p>
+        <div class="pill-row"><div class="pill">5 scenario-based questions</div><div class="pill">Specific vocab definitions</div><div class="pill">Slide + web citations</div><div class="pill">Chapter 1 only</div></div>
+      </div>
+      <aside class="hero-side">
+        <h2>What this page focuses on</h2>
+        <div class="metric"><div class="metric-num">1</div><div><b>IS foundations</b><span>How people, processes, data, software, and hardware work together as one system.</span></div></div>
+        <div class="metric"><div class="metric-num">2</div><div><b>Business context</b><span>Why managers need to care about process, collaboration, and organizational change, not just tools.</span></div></div>
+        <div class="metric"><div class="metric-num">3</div><div><b>Strategic thinking</b><span>How digital transformation and better systems create value when aligned with business needs.</span></div></div>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <div class="panel" id="quiz">
+        <h2>Chapter 1 Quiz</h2>
+        <p class="panel-intro">Each question starts with a short scenario and asks for the best MIS explanation or decision.</p>
+        <div class="quiz-list">
+          <article class="question">
+            <div class="q-top"><div class="q-badge">Question 1</div><div class="mini">Application / analysis</div></div>
+            <div class="scenario">A student organization buys a new scheduling app and expects its event planning problems to disappear right away. After a month, officers realize that members still enter data inconsistently, nobody agrees on the process for approving events, and important deadlines are still missed. The president says the mistake was thinking the app alone would fix everything.</div>
+            <p class="prompt">Which idea BEST explains why the new app did not solve the problem by itself?</p>
+            <div class="options"><div class="option">A. An information system includes people and procedures, not just software</div><div class="option">B. Network effects automatically improve every internal process</div><div class="option">C. Switching costs always make new apps fail at first</div><div class="option">D. Capital intensity is the main barrier to better scheduling</div></div>
+            <div class="correct">Correct answer: A</div>
+            <details><summary>Explanation</summary><div class="explain">A is correct because the five-component model says an information system includes hardware, software, data, procedures, and people. The scenario shows that the organization changed one component, software, but failed to fix the people and procedure parts of the system. B is wrong because network effects are about value increasing with more users, not about broken internal workflows. C is wrong because switching costs are not the main problem described. D is wrong because capital intensity has nothing to do with a student group’s scheduling process.</div></details>
+          </article>
+
+          <article class="question">
+            <div class="q-top"><div class="q-badge">Question 2</div><div class="mini">Application / analysis</div></div>
+            <div class="scenario">A small bakery wants to offer online ordering, curbside pickup, and automatic text updates. The owner already has computers and internet access, but she realizes the business also needs cleaner order data, clearer employee steps, and training so staff know how to handle pickup orders correctly. She asks what broader MIS concept explains this change.</div>
+            <p class="prompt">Which concept BEST fits what the bakery is trying to do?</p>
+            <div class="options"><div class="option">A. Vertical integration into delivery fleets</div><div class="option">B. Digital transformation of a business process</div><div class="option">C. Capital intensity in semiconductor design</div><div class="option">D. Price elasticity of computing demand</div></div>
+            <div class="correct">Correct answer: B</div>
+            <details><summary>Explanation</summary><div class="explain">B is correct because the bakery is using digital tools to redesign how it takes orders, communicates with customers, and runs pickup operations. The slides frame digital transformation as more than just buying technology; it changes business processes and how work gets done. A is wrong because the bakery is not taking ownership of another stage in a value chain. C is unrelated to bakery operations. D is about demand rising as tech gets cheaper, which is not the main issue here.</div></details>
+          </article>
+
+          <article class="question">
+            <div class="q-top"><div class="q-badge">Question 3</div><div class="mini">Application / analysis</div></div>
+            <div class="scenario">A startup’s founder tells her team, “We already bought better laptops, so our information system is now stronger.” Her operations manager disagrees and points out that the company still has messy customer data, unclear task ownership, and no shared process for following up with leads. The manager wants the founder to see the difference between information technology and an information system.</div>
+            <p class="prompt">Which explanation is MOST accurate?</p>
+            <div class="options"><div class="option">A. Information technology and information systems mean exactly the same thing</div><div class="option">B. Stronger laptops alone create a complete system even without good data or procedures</div><div class="option">C. Information technology is only the hardware and software portion, while an information system is broader</div><div class="option">D. Information systems matter only when a company becomes very large</div></div>
+            <div class="correct">Correct answer: C</div>
+            <details><summary>Explanation</summary><div class="explain">C is correct because the slides distinguish information technology from the broader information system. IT usually refers to the hardware and software, while an information system also includes people, procedures, and data. A is wrong because the chapter treats the two ideas differently. B is wrong because the scenario clearly shows missing system components. D is wrong because even small firms rely on information systems to operate effectively.</div></details>
+          </article>
+
+          <article class="question">
+            <div class="q-top"><div class="q-badge">Question 4</div><div class="mini">Analysis / evaluation</div></div>
+            <div class="scenario">A campus tutoring service stores student notes in one app, attendance in another, and billing details in a third. Tutors often waste time asking each other for updates because information is scattered and no one sees the same picture of each student. The director wants the single change that would MOST improve coordination.</div>
+            <p class="prompt">Which action would MOST effectively improve the service’s information system?</p>
+            <div class="options"><div class="option">A. Buy faster Wi‑Fi for tutors without changing data or process design</div><div class="option">B. Build a more integrated process with shared data and clearer procedures across the team</div><div class="option">C. Replace all tutors with automation as soon as possible</div><div class="option">D. Focus only on making the logo and interface look more modern</div></div>
+            <div class="correct">Correct answer: B</div>
+            <details><summary>Explanation</summary><div class="explain">B is correct because the core problem is fragmented information and weak coordination across people and procedures. A shared process plus shared data improves the actual information system rather than only upgrading one technical component. A is wrong because faster Wi‑Fi does not solve inconsistent information flow by itself. C is extreme and ignores the value of people in the system. D focuses on appearance instead of underlying process and data quality.</div></details>
+          </article>
+
+          <article class="question">
+            <div class="q-top"><div class="q-badge">Question 5</div><div class="mini">Application / evaluation</div></div>
+            <div class="scenario">A retail manager is reviewing two possible technology projects. One project would add flashy new screens in stores, while the other would improve inventory accuracy, employee workflows, and the speed of restocking decisions. She wants the project that better reflects MIS thinking from the start of the course.</div>
+            <p class="prompt">Which project should the manager choose if she wants the stronger information system improvement?</p>
+            <div class="options"><div class="option">A. The screen project, because visible technology is always the clearest source of value</div><div class="option">B. The inventory and workflow project, because it improves information quality and business process performance</div><div class="option">C. The screen project, because hardware matters more than procedures and people</div><div class="option">D. Neither project, because MIS is only about programming</div></div>
+            <div class="correct">Correct answer: B</div>
+            <details><summary>Explanation</summary><div class="explain">B is correct because Chapter 1 pushes managers to think about business value, process, and better decisions rather than just flashy tools. Improving inventory accuracy and workflows strengthens the system’s data and procedures, which can directly improve performance. A and C are wrong because they overvalue visible technology while ignoring process. D is wrong because MIS is broader than programming and includes management, decision-making, and business systems.</div></details>
+          </article>
+        </div>
+      </div>
+
+      <aside class="panel" id="vocab">
+        <h2>Vocabulary for Chapter 1</h2>
+        <p class="panel-intro">Specific definitions tied to the chapter slides and the kind of business-first framing your professor seems to like.</p>
+        <div class="vocab-wrap">
+          <div class="vocab-card"><div class="term"><h3>Information System (IS)</h3><span class="tag">Core idea</span></div><p>An information system is a group of components that work together to produce information useful for a business or organization. In this chapter, the key idea is that an IS is not just technology. It also includes data, people, and procedures.</p><div class="cite-mini">Citations: [S1], [S2], [W1]</div></div>
+          <div class="vocab-card"><div class="term"><h3>Information Technology (IT)</h3><span class="tag">Subset</span></div><p>Information technology usually refers to the hardware and software used in a system. It matters because many students confuse IT with IS, but the course keeps emphasizing that technology is only part of the larger system.</p><div class="cite-mini">Citations: [S2], [W2]</div></div>
+          <div class="vocab-card"><div class="term"><h3>Five-Component Model</h3><span class="tag">Framework</span></div><p>The five-component model says an information system includes hardware, software, data, procedures, and people. Managers use this model to diagnose why a system is working poorly and to avoid assuming that software alone can solve every problem.</p><div class="cite-mini">Citations: [S1], [S3]</div></div>
+          <div class="vocab-card"><div class="term"><h3>Procedure</h3><span class="tag">Process</span></div><p>A procedure is the method or set of steps people follow when using an information system. Procedures matter because even strong software can fail if people do not know what steps to follow or if the process itself is poorly designed.</p><div class="cite-mini">Citations: [S3], [W3]</div></div>
+          <div class="vocab-card"><div class="term"><h3>Data</h3><span class="tag">Resource</span></div><p>Data are recorded facts or observations. In MIS, the point is not just that data exist, but that clean and shared data allow an organization to create better information and make better decisions.</p><div class="cite-mini">Citations: [S3], [W4]</div></div>
+          <div class="vocab-card"><div class="term"><h3>Digital Transformation</h3><span class="tag">Business change</span></div><p>Digital transformation is the use of digital tools to redesign or improve how a business creates value and performs work. The important idea is that it changes processes and organizational behavior, not just the visible technology.</p><div class="cite-mini">Citations: [S4], [W5]</div></div>
+          <div class="vocab-card"><div class="term"><h3>Collaboration</h3><span class="tag">People component</span></div><p>Collaboration is coordinated work across people and roles to achieve a shared result. In the opening chapter, collaboration matters because information systems often fail when people cannot share data, coordinate actions, or understand common procedures.</p><div class="cite-mini">Citations: [S5], [S6]</div></div>
+          <div class="vocab-card"><div class="term"><h3>Business Process</h3><span class="tag">Operations</span></div><p>A business process is a set of related activities that accomplish a business objective. MIS focuses on these processes because information systems create value when they improve how work is actually performed, not when they only add flashy technology.</p><div class="cite-mini">Citations: [S4], [S6], [W6]</div></div>
+        </div>
+
+        <div class="tool-stack" style="margin-top:18px;">
+          <div class="toolbox"><h3>Common test trap</h3><p>Do not assume that buying better software automatically fixes a weak information system. Chapter 1 keeps pushing you to look at people, data, and procedures too.</p></div>
+          <div class="toolbox"><h3>Study shortcut</h3><p>When a scenario asks what went wrong, run through the five components one by one: hardware, software, data, procedures, and people.</p></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="panel" id="sources">
+      <h2>Citations / Sources</h2>
+      <p class="panel-intro">These source cards show whether each item came from your Chapter 1 slides or from outside web references.</p>
+      <div class="source-grid">
+        <div class="source-card"><div class="source-type slide">Class slide source</div><h3>[S1] Five-component model introduction</h3><p>Used for the basic idea that an information system includes hardware, software, data, procedures, and people.</p><a href="#">Source: 02 - Setting the Stage.pdf</a></div>
+        <div class="source-card"><div class="source-type slide">Class slide source</div><h3>[S2] IS versus IT framing</h3><p>Used for the distinction between information systems and information technology.</p><a href="#">Source: 02 - Setting the Stage.pdf</a></div>
+        <div class="source-card"><div class="source-type slide">Class slide source</div><h3>[S3] Roles of data, procedures, and people</h3><p>Used for explaining why software alone does not create a strong system.</p><a href="#">Source: 02 - Setting the Stage.pdf</a></div>
+        <div class="source-card"><div class="source-type slide">Class slide source</div><h3>[S4] Business value and digital change</h3><p>Used for the idea that digital tools create value when they improve how a business works, not when they are just visible technology.</p><a href="#">Source: 02 - Setting the Stage.pdf</a></div>
+        <div class="source-card"><div class="source-type slide">Class slide source</div><h3>[S5] Collaboration and organizational use</h3><p>Used for team coordination, communication, and the people side of systems.</p><a href="#">Source: 02 - Setting the Stage.pdf</a></div>
+        <div class="source-card"><div class="source-type slide">Class slide source</div><h3>[S6] Business processes and systems thinking</h3><p>Used for the idea that information systems matter because they improve business processes and decision-making.</p><a href="#">Source: 02 - Setting the Stage.pdf</a></div>
+        <div class="source-card"><div class="source-type web">Outside web source</div><h3>[W1] IBM: What is an information system?</h3><p>Supports the broader idea that an information system combines technology, people, and processes to manage information.</p><a href="https://www.ibm.com/think/topics/information-system" target="_blank" rel="noopener noreferrer">IBM information systems overview</a></div>
+        <div class="source-card"><div class="source-type web">Outside web source</div><h3>[W2] IBM: Information technology</h3><p>Supports the distinction between IT tools and the broader organizational systems that use them.</p><a href="https://www.ibm.com/think/topics/information-technology" target="_blank" rel="noopener noreferrer">IBM information technology overview</a></div>
+        <div class="source-card"><div class="source-type web">Outside web source</div><h3>[W3] Asana: What is a procedure?</h3><p>Supports the general idea that procedures are repeatable steps or instructions used to perform work consistently.</p><a href="https://asana.com/resources/procedure" target="_blank" rel="noopener noreferrer">Asana procedure overview</a></div>
+        <div class="source-card"><div class="source-type web">Outside web source</div><h3>[W4] Oracle: What is data?</h3><p>Supports the distinction between raw data and the information derived from it for decisions.</p><a href="https://www.oracle.com/database/what-is-data/" target="_blank" rel="noopener noreferrer">Oracle data overview</a></div>
+        <div class="source-card"><div class="source-type web">Outside web source</div><h3>[W5] IBM: What is digital transformation?</h3><p>Supports the idea that digital transformation is about changing business operations and value creation with digital tools.</p><a href="https://www.ibm.com/think/topics/digital-transformation" target="_blank" rel="noopener noreferrer">IBM digital transformation overview</a></div>
+        <div class="source-card"><div class="source-type web">Outside web source</div><h3>[W6] Salesforce: What is a business process?</h3><p>Supports the idea that business processes are structured sets of activities that help an organization achieve a specific objective.</p><a href="https://www.salesforce.com/resources/articles/business-process/" target="_blank" rel="noopener noreferrer">Salesforce business process overview</a></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
